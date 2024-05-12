@@ -78,10 +78,15 @@ for platform_name in platforms_to_build:
     platform_dir = "release/%s" % release_platform_name
     os.makedirs(platform_dir, exist_ok=True)
     for model_name in models:
+        if model_name.startswith("tfc"):
+            specialize_layers_config_file="folding_config/tfc_specialize_layers_config.json"
+        else:
+            specialize_layers_config_file="folding_config/cnv_specialize_layers_config.json"
         # set up the build configuration for this model
         cfg = build_cfg.DataflowBuildConfig(
             output_dir="output_%s_%s" % (model_name, release_platform_name),
             folding_config_file="folding_config/%s_folding_config.json" % model_name,
+            specialize_layers_config_file=specialize_layers_config_file,
             synth_clk_period_ns=5.0,
             board=platform_name,
             shell_flow_type=shell_flow_type,

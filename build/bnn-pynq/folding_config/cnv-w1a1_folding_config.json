@@ -1,6 +1,6 @@
 {
   "Defaults": {},
-  "Thresholding_rtl_0": {
+  "Thresholding_hls_0": {
     "PE": 1
   },
   "ConvolutionInputGenerator_rtl_0": {
