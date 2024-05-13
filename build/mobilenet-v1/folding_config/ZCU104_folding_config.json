@@ -8,7 +8,7 @@
     "SIMD": 1,
     "ram_style": "distributed"
   },
-  "MVAU_rtl_0": {
+  "MVAU_hls_0": {
     "PE": 16,
     "SIMD": 3,
     "ram_style": "auto",
@@ -55,7 +55,7 @@
     "mem_mode": "internal_embedded",
     "runtime_writeable_weights": 0
   },
-  "MVAU_rtl_1": {
+  "MVAU_hls_1": {
     "PE": 8,
     "SIMD": 8,
     "ram_style": "auto",
@@ -98,7 +98,7 @@
     "ram_style": "auto",
     "depth": 32
   },
-  "MVAU_rtl_2": {
+  "MVAU_hls_2": {
     "PE": 16,
     "SIMD": 8,
     "ram_style": "auto",
@@ -141,7 +141,7 @@
     "ram_style": "auto",
     "depth": 32
   },
-  "MVAU_rtl_3": {
+  "MVAU_hls_3": {
     "PE": 32,
     "SIMD": 8,
     "ram_style": "auto",
@@ -184,7 +184,7 @@
     "ram_style": "auto",
     "depth": 32
   },
-  "MVAU_rtl_4": {
+  "MVAU_hls_4": {
     "PE": 16,
     "SIMD": 8,
     "ram_style": "auto",
@@ -227,7 +227,7 @@
     "ram_style": "auto",
     "depth": 32
   },
-  "MVAU_rtl_5": {
+  "MVAU_hls_5": {
     "PE": 32,
     "SIMD": 8,
     "ram_style": "auto",
@@ -270,7 +270,7 @@
     "ram_style": "auto",
     "depth": 32
   },
-  "MVAU_rtl_6": {
+  "MVAU_hls_6": {
     "PE": 16,
     "SIMD": 8,
     "ram_style": "auto",
@@ -313,7 +313,7 @@
     "ram_style": "auto",
     "depth": 64
   },
-  "MVAU_rtl_7": {
+  "MVAU_hls_7": {
     "PE": 32,
     "SIMD": 8,
     "ram_style": "auto",
@@ -356,11 +356,11 @@
     "ram_style": "auto",
     "depth": 64
   },
-  "MVAU_rtl_8": {
+  "MVAU_hls_8": {
     "PE": 32,
     "SIMD": 8,
     "ram_style": "auto",
-    "resType": "dsp",
+    "resType": "lut",
     "mem_mode": "internal_decoupled",
     "runtime_writeable_weights": 0
   },
@@ -399,11 +399,11 @@
     "ram_style": "auto",
     "depth": 64
   },
-  "MVAU_rtl_9": {
+  "MVAU_hls_9": {
     "PE": 32,
     "SIMD": 8,
     "ram_style": "auto",
-    "resType": "dsp",
+    "resType": "lut",
     "mem_mode": "internal_decoupled",
     "runtime_writeable_weights": 0
   },
@@ -442,11 +442,11 @@
     "ram_style": "auto",
     "depth": 64
   },
-  "MVAU_rtl_10": {
+  "MVAU_hls_10": {
     "PE": 32,
     "SIMD": 8,
     "ram_style": "auto",
-    "resType": "dsp",
+    "resType": "lut",
     "mem_mode": "internal_decoupled",
     "runtime_writeable_weights": 0
   },
@@ -485,11 +485,11 @@
     "ram_style": "auto",
     "depth": 64
   },
-  "MVAU_rtl_11": {
+  "MVAU_hls_11": {
     "PE": 32,
     "SIMD": 8,
     "ram_style": "auto",
-    "resType": "dsp",
+    "resType": "lut",
     "mem_mode": "internal_decoupled",
     "runtime_writeable_weights": 0
   },
@@ -528,7 +528,7 @@
     "ram_style": "auto",
     "depth": 64
   },
-  "MVAU_rtl_12": {
+  "MVAU_hls_12": {
     "PE": 16,
     "SIMD": 8,
     "ram_style": "ultra",
@@ -571,11 +571,11 @@
     "ram_style": "auto",
     "depth": 128
   },
-  "MVAU_rtl_13": {
+  "MVAU_hls_13": {
     "PE": 32,
     "SIMD": 8,
     "ram_style": "ultra",
-    "resType": "dsp",
+    "resType": "lut",
     "mem_mode": "internal_decoupled",
     "runtime_writeable_weights": 1
   },
@@ -592,7 +592,7 @@
   "Pool_hls_0": {
     "PE": 1
   },
-  "MVAU_rtl_14": {
+  "MVAU_hls_14": {
     "PE": 1,
     "SIMD": 16,
     "ram_style": "ultra",
