@@ -49,7 +49,6 @@ zynq_platforms = ["ZCU104", "ZCU102"]
 alveo_platforms = ["U250"]  # "U50", "U200", "U280"
 platforms_to_build = zynq_platforms + alveo_platforms
 
-
 # determine which shell flow to use for a given platform
 def platform_to_shell(platform):
     if platform in zynq_platforms:
@@ -124,12 +123,6 @@ for platform_name in platforms_to_build:
         # for Zynq, use the board name as the release name
         # e.g. ZCU104
         release_platform_name = platform_name
-        # for ZCU104 we provide a specialize layer json
-        specialize_layer_file = (
-            "specialize_layers_config/ZCU104_specialize_layers_config.json"
-            if platform_name == "ZCU104"
-            else None
-        )
     platform_dir = "release/%s" % release_platform_name
     os.makedirs(platform_dir, exist_ok=True)
 
@@ -137,7 +130,7 @@ for platform_name in platforms_to_build:
         steps=select_build_steps(platform_name),
         output_dir="output_%s_%s" % (model_name, release_platform_name),
         folding_config_file="folding_config/%s_folding_config.json" % platform_name,
-        specialize_layers_config_file=specialize_layer_file,
+        specialize_layers_config_file="specialize_layers_config/mobilenetv1_specialize_layers.json",
         synth_clk_period_ns=select_clk_period(platform_name),
         board=platform_name,
         shell_flow_type=shell_flow_type,
