@@ -8,7 +8,7 @@
     "parallel_window": 0,
     "ram_style": "distributed"
   },
-  "MVAU_rtl_0": {
+  "MVAU_hls_0": {
     "PE": 16,
     "SIMD": 6,
     "ram_style": "auto",
@@ -33,7 +33,7 @@
     "parallel_window": 0,
     "ram_style": "distributed"
   },
-  "MVAU_rtl_1": {
+  "MVAU_hls_1": {
     "PE": 16,
     "SIMD": 48,
     "ram_style": "auto",
@@ -58,7 +58,7 @@
     "parallel_window": 0,
     "ram_style": "distributed"
   },
-  "MVAU_rtl_2": {
+  "MVAU_hls_2": {
     "PE": 8,
     "SIMD": 48,
     "ram_style": "auto",
@@ -83,7 +83,7 @@
     "parallel_window": 0,
     "ram_style": "distributed"
   },
-  "MVAU_rtl_3": {
+  "MVAU_hls_3": {
     "PE": 8,
     "SIMD": 24,
     "ram_style": "auto",
@@ -108,7 +108,7 @@
     "parallel_window": 0,
     "ram_style": "distributed"
   },
-  "MVAU_rtl_4": {
+  "MVAU_hls_4": {
     "PE": 4,
     "SIMD": 24,
     "ram_style": "auto",
@@ -133,7 +133,7 @@
     "parallel_window": 0,
     "ram_style": "distributed"
   },
-  "MVAU_rtl_5": {
+  "MVAU_hls_5": {
     "PE": 4,
     "SIMD": 12,
     "ram_style": "auto",
@@ -158,7 +158,7 @@
     "parallel_window": 0,
     "ram_style": "distributed"
   },
-  "MVAU_rtl_6": {
+  "MVAU_hls_6": {
     "PE": 4,
     "SIMD": 6,
     "ram_style": "auto",
@@ -175,7 +175,7 @@
   "StreamingMaxPool_hls_6": {
     "PE": 1
   },
-  "MVAU_rtl_7": {
+  "MVAU_hls_7": {
     "PE": 4,
     "SIMD": 4,
     "ram_style": "auto",
@@ -189,7 +189,7 @@
     "depth_trigger_uram": 0,
     "depth_trigger_bram": 0
   },
-  "MVAU_rtl_8": {
+  "MVAU_hls_8": {
     "PE": 4,
     "SIMD": 2,
     "ram_style": "auto",
@@ -203,7 +203,7 @@
     "depth_trigger_uram": 0,
     "depth_trigger_bram": 0
   },
-  "MVAU_rtl_9": {
+  "MVAU_hls_9": {
     "PE": 4,
     "SIMD": 1,
     "ram_style": "auto",
