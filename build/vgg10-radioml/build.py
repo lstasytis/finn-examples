@@ -25,28 +25,39 @@
 # CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
 import finn.builder.build_dataflow as build
 import finn.builder.build_dataflow_config as build_cfg
 from finn.util.basic import alveo_default_platform
 import os
 import shutil
-
+import json
 import onnx
 from qonnx.core.modelwrapper import ModelWrapper
 
 # custom steps
 from custom_steps import step_pre_streamline, step_convert_final_layers
 
-model_name = "radioml_w4a4_small_tidy"
-model_file = "models/%s.onnx" % model_name
 
-verif_en = os.getenv("VERIFICATION_EN", "0")
+import sys
 
-# which platforms to build the networks for
-zynq_platforms = ["ZCU104"]
-alveo_platforms = []
-platforms_to_build = zynq_platforms + alveo_platforms
+folding_method_choice = int(sys.argv[1])
+output_type = int(sys.argv[2])
+verify = int(sys.argv[3])
+padding = int(sys.argv[4])
+folding_dwc_heuristic = int(sys.argv[5])
+auto_fifo_type = int(sys.argv[6])
+folding_max_attempts = int(sys.argv[7])
+
+if auto_fifo_type == 0:
+    auto_fifo_depths = False
+    auto_fifo_strategy = "characterize"
+elif auto_fifo_type == 1:
+    auto_fifo_depths = True
+    auto_fifo_strategy = "characterize"
+elif auto_fifo_type == 2:
+    auto_fifo_depths = True
+    auto_fifo_strategy = "characterize_analytic"
+
 
 
 def custom_step_update_model(model, cfg):
@@ -58,6 +69,137 @@ def custom_step_update_model(model, cfg):
 
     return model_ref
 
+
+
+# assemble build flow from custom and pre-existing steps
+def estimate_build_steps():
+    return [
+        custom_step_update_model,
+        "step_tidy_up",
+        step_pre_streamline,
+        "step_streamline",
+        "step_convert_to_hw",
+        step_convert_final_layers,
+        "step_create_dataflow_partition",
+        "step_specialize_layers",
+        "step_target_fps_parallelization",
+        "step_apply_folding_config",
+        "step_minimize_bit_width",
+        "step_set_fifo_depths",
+        "step_generate_estimate_reports",
+        
+    ]
+
+def rtlsim_build_steps():
+    return [
+        custom_step_update_model,
+        "step_tidy_up",
+        step_pre_streamline,
+        "step_streamline",
+        "step_convert_to_hw",
+        step_convert_final_layers,
+        "step_create_dataflow_partition",
+        "step_specialize_layers",
+        "step_target_fps_parallelization",
+        "step_apply_folding_config",
+        "step_minimize_bit_width",
+        "step_set_fifo_depths",
+        "step_generate_estimate_reports",
+        
+        "step_hw_codegen",
+        "step_hw_ipgen",
+        
+        "step_create_stitched_ip",
+        "step_measure_rtlsim_performance",
+    ]
+
+def hw_build_steps():
+    return [
+        custom_step_update_model,
+        "step_tidy_up",
+        step_pre_streamline,
+        "step_streamline",
+        "step_convert_to_hw",
+        step_convert_final_layers,
+        "step_create_dataflow_partition",
+        "step_specialize_layers",
+        "step_target_fps_parallelization",
+        "step_apply_folding_config",
+        "step_minimize_bit_width",
+        "step_set_fifo_depths",
+        "step_generate_estimate_reports",
+        
+        "step_hw_codegen",
+        "step_hw_ipgen",
+        
+        "step_create_stitched_ip",
+        "step_measure_rtlsim_performance",
+        "step_out_of_context_synthesis",
+        "step_synthesize_bitfile",
+        "step_make_pynq_driver",
+        "step_deployment_package",
+    ]
+
+
+
+model_name = "radioml_w4a4_small_tidy"
+
+# which platforms to build the networks for
+zynq_platforms = ["ZCU104"]
+alveo_platforms = []
+platforms_to_build = zynq_platforms + alveo_platforms
+folding_methods = ["default", "naive", "optimized", "optimized_same_throughput"]
+
+
+
+if folding_method_choice not in [0,1,2]:
+    print("folding method has to be set from range [1,2,3] (default, naive folding, optimized folding)")
+else:
+    exit
+folding = folding_methods[folding_method_choice]
+
+build_dir = os.environ["FINN_BUILD_DIR"]
+os.chdir(f"{build_dir}/../projects/finn/finn-examples/build/vgg10-radioml/")
+
+
+
+if output_type == 0:
+    build_steps = estimate_build_steps()
+    generate_outputs = [build_cfg.DataflowOutputType.ESTIMATE_REPORTS]   
+
+elif output_type == 1:
+    build_steps = rtlsim_build_steps()
+    generate_outputs = [build_cfg.DataflowOutputType.ESTIMATE_REPORTS,
+                        build_cfg.DataflowOutputType.RTLSIM_PERFORMANCE,
+                              build_cfg.DataflowOutputType.STITCHED_IP]
+elif output_type == 2:
+    build_steps = hw_build_steps()
+    generate_outputs = [build_cfg.DataflowOutputType.ESTIMATE_REPORTS,
+                        build_cfg.DataflowOutputType.RTLSIM_PERFORMANCE,
+                            build_cfg.DataflowOutputType.STITCHED_IP,
+                            build_cfg.DataflowOutputType.BITFILE,]
+else:
+    build_steps = [
+    custom_step_update_model,
+    "step_tidy_up",
+    step_pre_streamline,
+    "step_streamline",
+    "step_convert_to_hw",
+    step_convert_final_layers,
+    "step_create_dataflow_partition",
+    "step_specialize_layers",
+    "step_target_fps_parallelization",
+    "step_apply_folding_config",
+    "step_minimize_bit_width",
+    "step_set_fifo_depths",
+    "step_generate_estimate_reports",
+ #   "step_hw_codegen",
+  #  "step_hw_ipgen",
+  #  "step_synth_ip",
+  #  "step_create_stitched_ip",
+
+    ]
+    generate_outputs = [build_cfg.DataflowOutputType.ESTIMATE_REPORTS]   
 
 # determine which shell flow to use for a given platform
 def platform_to_shell(platform):
@@ -72,34 +214,6 @@ def platform_to_shell(platform):
 # select target clock frequency
 def select_clk_period(platform):
     return 4.0
-
-
-# assemble build flow from custom and pre-existing steps
-def select_build_steps(platform):
-    return [
-        custom_step_update_model,
-        "step_tidy_up",
-        step_pre_streamline,
-        "step_streamline",
-        "step_convert_to_hw",
-        step_convert_final_layers,
-        "step_create_dataflow_partition",
-        "step_specialize_layers",
-        "step_target_fps_parallelization",
-        "step_apply_folding_config",
-        "step_minimize_bit_width",
-        "step_generate_estimate_reports",
-        "step_hw_codegen",
-        "step_hw_ipgen",
-        "step_set_fifo_depths",
-        "step_create_stitched_ip",
-        "step_measure_rtlsim_performance",
-        "step_out_of_context_synthesis",
-        "step_synthesize_bitfile",
-        "step_make_pynq_driver",
-        "step_deployment_package",
-    ]
-
 
 # create a release dir, used for finn-examples release packaging
 os.makedirs("release", exist_ok=True)
@@ -119,46 +233,86 @@ for platform_name in platforms_to_build:
     platform_dir = "release/%s" % release_platform_name
     os.makedirs(platform_dir, exist_ok=True)
 
+    if folding == "default":
+        folding_config_file="folding_config/ZCU104_folding_config.json"
+        target_fps=None  
+        style="naive"     
+
+    elif folding == "naive":
+        folding_config_file = None
+
+        test = f"vgg10-radioml/output_{model_name}_{platform_name}"
+        dir = f'{build_dir}/../projects/finn/finn-examples/build/{test}_default_0_0_2_1'
+        with open(dir+f"/report/estimate_network_performance.json") as f:
+            throughput_rep = json.load(f)
+        target_fps=int(throughput_rep['estimated_throughput_fps'])
+        style = "naive"
+
+    elif folding == "optimized":
+        folding_config_file = None
+        test = f"vgg10-radioml/output_{model_name}_{platform_name}"
+        dir = f'{build_dir}/../projects/finn/finn-examples/build/{test}_default_0_0_2_1'
+        with open(dir+f"/report/estimate_network_performance.json") as f:
+            throughput_rep = json.load(f)
+        target_fps=int(throughput_rep['estimated_throughput_fps'])
+        style="optimizer"
+
+
+
+    # Set up variables needed for verifying build
+    ci_folder = "../../ci"
+    io_folder = ci_folder + "/verification_io"
+    if os.getenv("VERIFICATION_EN", "0") in {"0", "1"}:
+        shutil.copy(ci_folder + "/verification_funcs.py", ".")
+        from verification_funcs import (
+            create_logger,
+            set_verif_steps,
+            set_verif_io,
+            verify_build_output,
+        )
+
+        create_logger()
+        verif_steps = set_verif_steps()
+        verif_input, verif_output = set_verif_io(io_folder, model_name)
+        if "folded_hls_cppsim" in verif_steps:
+            verif_steps.remove("folded_hls_cppsim")
+
+
     cfg = build_cfg.DataflowBuildConfig(
-        steps=select_build_steps(platform_name),
-        output_dir="output_%s_%s" % (model_name, release_platform_name),
+        steps=build_steps,
+        output_dir="output_%s_%s_%s_%s_%s_%s_%s" % (model_name, release_platform_name, folding, padding,folding_dwc_heuristic, auto_fifo_type,folding_max_attempts),
         synth_clk_period_ns=select_clk_period(platform_name),
+        folding_config_file=folding_config_file,
+        target_fps=target_fps,
+        folding_style=style,
+        folding_max_attempts=folding_max_attempts,
+        folding_maximum_padding=padding,
+        enable_folding_dwc_heuristic=folding_dwc_heuristic,
+        auto_fifo_depths = auto_fifo_depths,
+        auto_fifo_strategy = auto_fifo_strategy,
         board=platform_name,
         shell_flow_type=shell_flow_type,
         vitis_platform=vitis_platform,
         specialize_layers_config_file="specialize_layers_config/%s_specialize_layers.json"
         % platform_name,
-        folding_config_file="folding_config/%s_folding_config.json" % platform_name,
+       # folding_config_file="folding_config/%s_folding_config.json" % platform_name,
         split_large_fifos=True,
         standalone_thresholds=True,
+       # verify_steps=verif_steps,
+       # verify_input_npy=verif_input,
+       # verify_expected_output_npy=verif_output,
+        #verify_save_full_context=True,
+        save_intermediate_models=True,
         # enable extra performance optimizations (physopt)
         vitis_opt_strategy=build_cfg.VitisOptStrategyCfg.PERFORMANCE_BEST,
-        generate_outputs=[
-            build_cfg.DataflowOutputType.ESTIMATE_REPORTS,
-            build_cfg.DataflowOutputType.STITCHED_IP,
-            build_cfg.DataflowOutputType.RTLSIM_PERFORMANCE,
-            build_cfg.DataflowOutputType.BITFILE,
-            build_cfg.DataflowOutputType.DEPLOYMENT_PACKAGE,
-            build_cfg.DataflowOutputType.PYNQ_DRIVER,
-        ],
+        generate_outputs=generate_outputs,
     )
-    if verif_en == "1":
-        # Build the model with verification
-        import sys
+    model_file = "models/%s.onnx" % model_name
+    build.build_dataflow_cfg(model_file, cfg)
 
-        sys.path.append(os.path.abspath(os.getenv("FINN_EXAMPLES_ROOT") + "/ci/"))
-        from verification_funcs import init_verif, verify_build_output
-
-        cfg.verify_steps, cfg.verify_input_npy, cfg.verify_expected_output_npy = init_verif(
-            model_name
-        )
-        if "folded_hls_cppsim" in cfg.verify_steps:
-            cfg.verify_steps.remove("folded_hls_cppsim")
-        build.build_dataflow_cfg(model_file, cfg)
+    if os.getenv("VERIFICATION_EN") == "1" and verify == 1:
+        # Verify build using verification output
         verify_build_output(cfg, model_name)
-    else:
-        # Build the model without verification
-        build.build_dataflow_cfg(model_file, cfg)
 
     # copy bitfiles and runtime weights into release dir if found
     bitfile_gen_dir = cfg.output_dir + "/bitfile"
