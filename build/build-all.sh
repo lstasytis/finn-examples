@@ -49,36 +49,7 @@ for BUILD_FOLDER in ${BUILD_FOLDERS[@]}; do
         cd $SCRIPTPATH/$BUILD_FOLDER/models
         rm -rf *.zip *.onnx *.npz
         ./download-model.sh || true
+        cd ../
+        python build.py
     fi
-done
-
-# run all build scripts, continue on error
-cd $SCRIPTPATH/finn
-for BUILD_FOLDER in ${BUILD_FOLDERS[@]}; do
-    ./run-docker.sh build_custom $SCRIPTPATH/$BUILD_FOLDER || true
-done
-
-# gather all release folders, continue on error
-mkdir -p $RELEASE_TARGET
-for BUILD_FOLDER in ${BUILD_FOLDERS[@]}; do
-    cp -r $SCRIPTPATH/$BUILD_FOLDER/release/* $RELEASE_TARGET || true
-done
-
-# create zip files for finn-examples upload
-cd $RELEASE_TARGET
-for dir in */; do
-    # remove trailing slash to get the directory name
-    dir_name="${dir%/}"
-
-    # check if it is a directory we are zipping
-    if [ -d "$dir_name" ]; then
-        zip -r "${dir_name}.zip" "$dir_name" || true
-    fi
-done
-
-# calculate the MD5sum for each of the zip files
-zip_files=(*.zip)
-for zip_file in "${zip_files[@]}"; do
-    md5sum_value=$(md5sum "$zip_file" | awk '{print $1}')
-    echo "$zip_file : $md5sum_value" >> md5sum.log
 done

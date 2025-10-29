@@ -31,7 +31,9 @@ import finn.builder.build_dataflow_config as build_cfg
 from finn.util.basic import alveo_default_platform
 import os
 import shutil
-
+from finn.util.basic import compute_total_model_fifo_size
+from qonnx.core.modelwrapper import ModelWrapper
+import time
 
 # the BNN-PYNQ models -- these all come as exported .onnx models
 # see models/download_bnn_pynq_models.sh
@@ -65,65 +67,98 @@ def platform_to_shell(platform):
 # create a release dir, used for finn-examples release packaging
 os.makedirs("release", exist_ok=True)
 
+
+# assemble build flow from custom and pre-existing steps
+select_build_steps = [
+    "step_qonnx_to_finn",
+    "step_tidy_up",
+    "step_streamline",
+    "step_convert_to_hw",
+    "step_create_dataflow_partition",
+    "step_specialize_layers",
+    "step_target_fps_parallelization",
+    "step_apply_folding_config",
+    "step_minimize_bit_width",
+    "step_generate_estimate_reports",
+    "step_set_fifo_depths",
+    # "step_hw_codegen",
+    # "step_hw_ipgen",
+    # "step_create_stitched_ip",
+    # "step_measure_rtlsim_performance",
+    # "step_out_of_context_synthesis",
+    # "step_synthesize_bitfile",
+    # "step_make_driver",
+    # "step_deployment_package",
+]
+
+
+methods = ["analytic_model_based"]
+
+
 for platform_name in platforms_to_build:
-    shell_flow_type = platform_to_shell(platform_name)
-    if shell_flow_type == build_cfg.ShellFlowType.VITIS_ALVEO:
-        vitis_platform = alveo_default_platform[platform_name]
-        # for Alveo, use the Vitis platform name as the release name
-        # e.g. xilinx_u250_xdma_201830_2
-        release_platform_name = vitis_platform
-    else:
-        vitis_platform = None
-        # for Zynq, use the board name as the release name
-        # e.g. ZCU104
-        release_platform_name = platform_name
-    platform_dir = "release/%s" % release_platform_name
-    os.makedirs(platform_dir, exist_ok=True)
-    for model_name in models:
-        # set up the build configuration for this model
-        cfg = build_cfg.DataflowBuildConfig(
-            output_dir="output_%s_%s" % (model_name, release_platform_name),
-            folding_config_file="folding_config/%s_folding_config.json" % model_name,
-            synth_clk_period_ns=5.0,
-            board=platform_name,
-            shell_flow_type=shell_flow_type,
-            vitis_platform=vitis_platform,
-            generate_outputs=[
-                build_cfg.DataflowOutputType.BITFILE,
-                build_cfg.DataflowOutputType.STITCHED_IP,
-            ],
-            save_intermediate_models=True,
-            default_swg_exception=True,
-            specialize_layers_config_file="specialize_layers_config/%s_specialize_layers.json"
-            % model_name,
-        )
-        model_file = "models/%s.onnx" % model_name
-
-        if verif_en == "1":
-            # Build the model with verification
-            import sys
-
-            sys.path.append(os.path.abspath(os.getenv("FINN_EXAMPLES_ROOT") + "/ci/"))
-            from verification_funcs import init_verif, verify_build_output
-
-            cfg.verify_steps, cfg.verify_input_npy, cfg.verify_expected_output_npy = init_verif(
-                model_name
-            )
-            build.build_dataflow_cfg(model_file, cfg)
-            verify_build_output(cfg, model_name)
+    for method in methods:
+        shell_flow_type = platform_to_shell(platform_name)
+        if shell_flow_type == build_cfg.ShellFlowType.VITIS_ALVEO:
+            vitis_platform = alveo_default_platform[platform_name]
+            # for Alveo, use the Vitis platform name as the release name
+            # e.g. xilinx_u250_xdma_201830_2
+            release_platform_name = vitis_platform
         else:
-            # Build the model without verification
-            build.build_dataflow_cfg(model_file, cfg)
+            vitis_platform = None
+            # for Zynq, use the board name as the release name
+            # e.g. ZCU104
+            release_platform_name = platform_name
+        platform_dir = "release/%s" % release_platform_name
+        os.makedirs(platform_dir, exist_ok=True)
 
-        # copy bitfiles into release dir if found
-        bitfile_gen_dir = cfg.output_dir + "/bitfile"
-        files_to_check_and_copy = [
-            "finn-accel.bit",
-            "finn-accel.hwh",
-            "finn-accel.xclbin",
-        ]
-        for f in files_to_check_and_copy:
-            src_file = bitfile_gen_dir + "/" + f
-            dst_file = platform_dir + "/" + f.replace("finn-accel", model_name)
-            if os.path.isfile(src_file):
-                shutil.copy(src_file, dst_file)
+
+        if method == "analytic_model_based":
+            auto_fifo_strategy = "analytical"
+            tav_generation_strategy_key = "tree_model"
+            auto_fifo_depths = True
+        elif method == "analytic_rtlsim":
+            auto_fifo_strategy = "analytical"
+            tav_generation_strategy_key = "rtlsim"
+            auto_fifo_depths = True
+        elif method == "largefifo_rtlsim":
+            auto_fifo_strategy = "largefifo_rtlsim"
+            tav_generation_strategy_key = "rtlsim"
+            auto_fifo_depths = True
+        else:
+            auto_fifo_depths = False
+
+        
+        for model_name in models:
+            # set up the build configuration for this model
+            last_output_dir = "output_%s_%s" % (model_name, release_platform_name)
+            cfg = build_cfg.DataflowBuildConfig(
+                output_dir=last_output_dir,
+                folding_config_file="folding_config/%s_folding_config.json" % model_name,
+                synth_clk_period_ns=5.0,
+                steps=select_build_steps,
+                board=platform_name,
+                auto_fifo_depths=auto_fifo_depths,
+                auto_fifo_strategy=auto_fifo_strategy,
+                tav_generation_strategy=tav_generation_strategy_key,
+                shell_flow_type=shell_flow_type,
+                vitis_platform=vitis_platform,
+                generate_outputs=[
+                    build_cfg.DataflowOutputType.BITFILE,
+                    build_cfg.DataflowOutputType.STITCHED_IP,
+                ],
+                save_intermediate_models=True,
+                default_swg_exception=True,
+                specialize_layers_config_file="specialize_layers_config/%s_specialize_layers.json"
+                % model_name,
+            )
+            model_file = "models/%s.onnx" % model_name
+
+
+            # Build the model without verification
+            t0 = time.time()
+            build.build_dataflow_cfg(model_file, cfg)
+            t1 = time.time()
+
+            model = ModelWrapper(last_output_dir + "/intermediate_models/step_set_fifo_depths.onnx")
+            size,depth = compute_total_model_fifo_size(model)
+            print(f"fifo sizing method: {method}, total fifo size in kb: {size // 1024}, depth: {depth}, time: {t1-t0}s")
