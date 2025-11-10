@@ -1,0 +1,380 @@
+--2025-10-29 13:06:26--  https://github.com/Xilinx/finn-examples/releases/download/v0.0.7a/onnx-models-radioml.zip
+Resolving github.com (github.com)... 140.82.121.4
+Connecting to github.com (github.com)|140.82.121.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://release-assets.githubusercontent.com/github-production-release-asset/317767587/4d9a6d5a-feca-4a44-abc0-838238041ad3?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-10-29T14%3A06%3A33Z&rscd=attachment%3B+filename%3Donnx-models-radioml.zip&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-10-29T13%3A05%3A53Z&ske=2025-10-29T14%3A06%3A33Z&sks=b&skv=2018-11-09&sig=jMYaqbmwnDuSULp0gg%2FBY%2BGZ9fta9RiVapSZt2DEBLw%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2MTc0MzQ4NiwibmJmIjoxNzYxNzQzMTg2LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.tDkNpPmbCmbKk02OonlWMij3QIYc0timYu8IUVGqIWA&response-content-disposition=attachment%3B%20filename%3Donnx-models-radioml.zip&response-content-type=application%2Foctet-stream [following]
+--2025-10-29 13:06:26--  https://release-assets.githubusercontent.com/github-production-release-asset/317767587/4d9a6d5a-feca-4a44-abc0-838238041ad3?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-10-29T14%3A06%3A33Z&rscd=attachment%3B+filename%3Donnx-models-radioml.zip&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-10-29T13%3A05%3A53Z&ske=2025-10-29T14%3A06%3A33Z&sks=b&skv=2018-11-09&sig=jMYaqbmwnDuSULp0gg%2FBY%2BGZ9fta9RiVapSZt2DEBLw%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2MTc0MzQ4NiwibmJmIjoxNzYxNzQzMTg2LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.tDkNpPmbCmbKk02OonlWMij3QIYc0timYu8IUVGqIWA&response-content-disposition=attachment%3B%20filename%3Donnx-models-radioml.zip&response-content-type=application%2Foctet-stream
+Resolving release-assets.githubusercontent.com (release-assets.githubusercontent.com)... 185.199.109.133, 185.199.111.133, 185.199.110.133, ...
+Connecting to release-assets.githubusercontent.com (release-assets.githubusercontent.com)|185.199.109.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 60001 (59K) [application/octet-stream]
+Saving to: ‘onnx-models-radioml.zip’
+
+     0K .......... .......... .......... .......... .......... 85% 34.5M 0s
+    50K ........                                              100% 70.6M=0.002s
+
+2025-10-29 13:06:27 (37.3 MB/s) - ‘onnx-models-radioml.zip’ saved [60001/60001]
+
+Archive:  onnx-models-radioml.zip
+  inflating: radioml_w4a4_small_tidy.onnx  
+--2025-10-29 13:06:27--  https://github.com/Xilinx/finn-examples/releases/download/v0.0.7a/onnx-models-mobilenetv1.zip
+Resolving github.com (github.com)... 140.82.121.4
+Connecting to github.com (github.com)|140.82.121.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://release-assets.githubusercontent.com/github-production-release-asset/317767587/a89c0534-f5d8-463d-8734-8c340223c69f?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-10-29T13%3A53%3A59Z&rscd=attachment%3B+filename%3Donnx-models-mobilenetv1.zip&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-10-29T12%3A53%3A33Z&ske=2025-10-29T13%3A53%3A59Z&sks=b&skv=2018-11-09&sig=3VyotKa89WNzDet0evZP7KTfbdyaqLOdHCVvj6C2m6Y%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2MTc0MzQ4NywibmJmIjoxNzYxNzQzMTg3LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.Yjo_74QwQyIfAu_jaFE3mZVDd0PKQpkUyLu8aQkh8c8&response-content-disposition=attachment%3B%20filename%3Donnx-models-mobilenetv1.zip&response-content-type=application%2Foctet-stream [following]
+--2025-10-29 13:06:27--  https://release-assets.githubusercontent.com/github-production-release-asset/317767587/a89c0534-f5d8-463d-8734-8c340223c69f?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-10-29T13%3A53%3A59Z&rscd=attachment%3B+filename%3Donnx-models-mobilenetv1.zip&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-10-29T12%3A53%3A33Z&ske=2025-10-29T13%3A53%3A59Z&sks=b&skv=2018-11-09&sig=3VyotKa89WNzDet0evZP7KTfbdyaqLOdHCVvj6C2m6Y%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2MTc0MzQ4NywibmJmIjoxNzYxNzQzMTg3LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.Yjo_74QwQyIfAu_jaFE3mZVDd0PKQpkUyLu8aQkh8c8&response-content-disposition=attachment%3B%20filename%3Donnx-models-mobilenetv1.zip&response-content-type=application%2Foctet-stream
+Resolving release-assets.githubusercontent.com (release-assets.githubusercontent.com)... 185.199.110.133, 185.199.108.133, 185.199.109.133, ...
+Connecting to release-assets.githubusercontent.com (release-assets.githubusercontent.com)|185.199.110.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 2879332 (2.7M) [application/octet-stream]
+Saving to: ‘onnx-models-mobilenetv1.zip’
+
+     0K .......... .......... .......... .......... ..........  1% 37.6M 0s
+    50K .......... .......... .......... .......... ..........  3% 28.6M 0s
+   100K .......... .......... .......... .......... ..........  5%  125M 0s
+   150K .......... .......... .......... .......... ..........  7% 51.5M 0s
+   200K .......... .......... .......... .......... ..........  8%  105M 0s
+   250K .......... .......... .......... .......... .......... 10%  119M 0s
+   300K .......... .......... .......... .......... .......... 12%  121M 0s
+   350K .......... .......... .......... .......... .......... 14% 87.9M 0s
+   400K .......... .......... .......... .......... .......... 16%  119M 0s
+   450K .......... .......... .......... .......... .......... 17%  119M 0s
+   500K .......... .......... .......... .......... .......... 19%  119M 0s
+   550K .......... .......... .......... .......... .......... 21%  112M 0s
+   600K .......... .......... .......... .......... .......... 23%  120M 0s
+   650K .......... .......... .......... .......... .......... 24%  103M 0s
+   700K .......... .......... .......... .......... .......... 26%  122M 0s
+   750K .......... .......... .......... .......... .......... 28% 98.8M 0s
+   800K .......... .......... .......... .......... .......... 30%  105M 0s
+   850K .......... .......... .......... .......... .......... 32% 12.3M 0s
+   900K .......... .......... .......... .......... .......... 33%  132M 0s
+   950K .......... .......... .......... .......... .......... 35%  188M 0s
+  1000K .......... .......... .......... .......... .......... 37%  227M 0s
+  1050K .......... .......... .......... .......... .......... 39%  229M 0s
+  1100K .......... .......... .......... .......... .......... 40%  209M 0s
+  1150K .......... .......... .......... .......... .......... 42%  186M 0s
+  1200K .......... .......... .......... .......... .......... 44%  232M 0s
+  1250K .......... .......... .......... .......... .......... 46%  231M 0s
+  1300K .......... .......... .......... .......... .......... 48%  231M 0s
+  1350K .......... .......... .......... .......... .......... 49%  204M 0s
+  1400K .......... .......... .......... .......... .......... 51%  231M 0s
+  1450K .......... .......... .......... .......... .......... 53%  109M 0s
+  1500K .......... .......... .......... .......... .......... 55% 81.9M 0s
+  1550K .......... .......... .......... .......... .......... 56%  184M 0s
+  1600K .......... .......... .......... .......... .......... 58%  227M 0s
+  1650K .......... .......... .......... .......... .......... 60%  229M 0s
+  1700K .......... .......... .......... .......... .......... 62% 14.1M 0s
+  1750K .......... .......... .......... .......... .......... 64%  200M 0s
+  1800K .......... .......... .......... .......... .......... 65%  229M 0s
+  1850K .......... .......... .......... .......... .......... 67%  231M 0s
+  1900K .......... .......... .......... .......... .......... 69%  215M 0s
+  1950K .......... .......... .......... .......... .......... 71%  194M 0s
+  2000K .......... .......... .......... .......... .......... 72%  231M 0s
+  2050K .......... .......... .......... .......... .......... 74%  221M 0s
+  2100K .......... .......... .......... .......... .......... 76%  213M 0s
+  2150K .......... .......... .......... .......... .......... 78%  209M 0s
+  2200K .......... .......... .......... .......... .......... 80% 40.9M 0s
+  2250K .......... .......... .......... .......... .......... 81%  204M 0s
+  2300K .......... .......... .......... .......... .......... 83%  219M 0s
+  2350K .......... .......... .......... .......... .......... 85%  181M 0s
+  2400K .......... .......... .......... .......... .......... 87%  209M 0s
+  2450K .......... .......... .......... .......... .......... 88%  211M 0s
+  2500K .......... .......... .......... .......... .......... 90%  211M 0s
+  2550K .......... .......... .......... .......... .......... 92%  197M 0s
+  2600K .......... .......... .......... .......... .......... 94%  211M 0s
+  2650K .......... .......... .......... .......... .......... 96%  214M 0s
+  2700K .......... .......... .......... .......... .......... 97%  210M 0s
+  2750K .......... .......... .......... .......... .......... 99%  199M 0s
+  2800K .......... .                                          100%  295M=0.03s
+
+2025-10-29 13:06:27 (98.8 MB/s) - ‘onnx-models-mobilenetv1.zip’ saved [2879332/2879332]
+
+Archive:  onnx-models-mobilenetv1.zip
+  inflating: mobilenetv1-w4a4_pre_post_tidy_opset-11.onnx  
+--2025-10-29 13:06:27--  https://github.com/Xilinx/finn-examples/releases/download/v0.0.7a/onnx-models-gtsrb.zip
+Resolving github.com (github.com)... 140.82.121.4
+Connecting to github.com (github.com)|140.82.121.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://release-assets.githubusercontent.com/github-production-release-asset/317767587/80750e12-85d1-4356-9baa-d1bec992fad7?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-10-29T13%3A41%3A47Z&rscd=attachment%3B+filename%3Donnx-models-gtsrb.zip&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-10-29T12%3A41%3A22Z&ske=2025-10-29T13%3A41%3A47Z&sks=b&skv=2018-11-09&sig=0Ql4Ssd8TFyX6J9sQI1oGD2gGeqvbzonfUcm9W0v7cQ%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2MTc0MzQ4NywibmJmIjoxNzYxNzQzMTg3LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.Yjo_74QwQyIfAu_jaFE3mZVDd0PKQpkUyLu8aQkh8c8&response-content-disposition=attachment%3B%20filename%3Donnx-models-gtsrb.zip&response-content-type=application%2Foctet-stream [following]
+--2025-10-29 13:06:27--  https://release-assets.githubusercontent.com/github-production-release-asset/317767587/80750e12-85d1-4356-9baa-d1bec992fad7?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-10-29T13%3A41%3A47Z&rscd=attachment%3B+filename%3Donnx-models-gtsrb.zip&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-10-29T12%3A41%3A22Z&ske=2025-10-29T13%3A41%3A47Z&sks=b&skv=2018-11-09&sig=0Ql4Ssd8TFyX6J9sQI1oGD2gGeqvbzonfUcm9W0v7cQ%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2MTc0MzQ4NywibmJmIjoxNzYxNzQzMTg3LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.Yjo_74QwQyIfAu_jaFE3mZVDd0PKQpkUyLu8aQkh8c8&response-content-disposition=attachment%3B%20filename%3Donnx-models-gtsrb.zip&response-content-type=application%2Foctet-stream
+Resolving release-assets.githubusercontent.com (release-assets.githubusercontent.com)... 185.199.110.133, 185.199.108.133, 185.199.109.133, ...
+Connecting to release-assets.githubusercontent.com (release-assets.githubusercontent.com)|185.199.110.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 368728 (360K) [application/octet-stream]
+Saving to: ‘onnx-models-gtsrb.zip’
+
+     0K .......... .......... .......... .......... .......... 13% 30.2M 0s
+    50K .......... .......... .......... .......... .......... 27% 31.4M 0s
+   100K .......... .......... .......... .......... .......... 41%  124M 0s
+   150K .......... .......... .......... .......... .......... 55%  124M 0s
+   200K .......... .......... .......... .......... .......... 69% 76.4M 0s
+   250K .......... .......... .......... .......... .......... 83%  117M 0s
+   300K .......... .......... .......... .......... .......... 97%  100M 0s
+   350K ..........                                            100%  171M=0.006s
+
+2025-10-29 13:06:27 (63.2 MB/s) - ‘onnx-models-gtsrb.zip’ saved [368728/368728]
+
+Archive:  onnx-models-gtsrb.zip
+  inflating: cnv_1w1a_gtsrb.onnx     
+--2025-10-29 13:06:27--  https://github.com/Xilinx/finn-examples/releases/download/v0.0.7a/onnx-models-cybersecurity.zip
+Resolving github.com (github.com)... 140.82.121.4
+Connecting to github.com (github.com)|140.82.121.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://release-assets.githubusercontent.com/github-production-release-asset/317767587/749b3620-a42d-435e-ae36-1aeefea1304d?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-10-29T13%3A44%3A33Z&rscd=attachment%3B+filename%3Donnx-models-cybersecurity.zip&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-10-29T12%3A44%3A33Z&ske=2025-10-29T13%3A44%3A33Z&sks=b&skv=2018-11-09&sig=86FxeNcPO1EJM91eXt6XiMx175Mv0r2Eg0Aox83lukE%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2MTc0MzQ4OCwibmJmIjoxNzYxNzQzMTg4LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.LQnHBi7enTnSa1AS2BxCg82O87_rCtUG6LmjfW_aUu8&response-content-disposition=attachment%3B%20filename%3Donnx-models-cybersecurity.zip&response-content-type=application%2Foctet-stream [following]
+--2025-10-29 13:06:28--  https://release-assets.githubusercontent.com/github-production-release-asset/317767587/749b3620-a42d-435e-ae36-1aeefea1304d?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-10-29T13%3A44%3A33Z&rscd=attachment%3B+filename%3Donnx-models-cybersecurity.zip&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-10-29T12%3A44%3A33Z&ske=2025-10-29T13%3A44%3A33Z&sks=b&skv=2018-11-09&sig=86FxeNcPO1EJM91eXt6XiMx175Mv0r2Eg0Aox83lukE%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2MTc0MzQ4OCwibmJmIjoxNzYxNzQzMTg4LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.LQnHBi7enTnSa1AS2BxCg82O87_rCtUG6LmjfW_aUu8&response-content-disposition=attachment%3B%20filename%3Donnx-models-cybersecurity.zip&response-content-type=application%2Foctet-stream
+Resolving release-assets.githubusercontent.com (release-assets.githubusercontent.com)... 185.199.110.133, 185.199.108.133, 185.199.109.133, ...
+Connecting to release-assets.githubusercontent.com (release-assets.githubusercontent.com)|185.199.110.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 21340 (21K) [application/octet-stream]
+Saving to: ‘onnx-models-cybersecurity.zip’
+
+     0K .......... ..........                                 100% 72.8M=0s
+
+2025-10-29 13:06:28 (72.8 MB/s) - ‘onnx-models-cybersecurity.zip’ saved [21340/21340]
+
+Archive:  onnx-models-cybersecurity.zip
+  inflating: unsw_nb15-mlp-w2a2.onnx  
+--2025-10-29 13:06:28--  https://github.com/Xilinx/finn-examples/releases/download/v0.0.1a/onnx-models-bnn-pynq.zip
+Resolving github.com (github.com)... 140.82.121.4
+Connecting to github.com (github.com)|140.82.121.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://release-assets.githubusercontent.com/github-production-release-asset/317767587/524e7c80-3d9c-11eb-80e3-114fc0c5929b?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-10-29T13%3A54%3A46Z&rscd=attachment%3B+filename%3Donnx-models-bnn-pynq.zip&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-10-29T12%3A53%3A48Z&ske=2025-10-29T13%3A54%3A46Z&sks=b&skv=2018-11-09&sig=Q4eB9rEPH4S%2Bx%2Fm7eu%2FCxam0iIf33cm6%2FxW3GFjzejU%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2MTc0MzQ4OCwibmJmIjoxNzYxNzQzMTg4LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.LQnHBi7enTnSa1AS2BxCg82O87_rCtUG6LmjfW_aUu8&response-content-disposition=attachment%3B%20filename%3Donnx-models-bnn-pynq.zip&response-content-type=application%2Foctet-stream [following]
+--2025-10-29 13:06:28--  https://release-assets.githubusercontent.com/github-production-release-asset/317767587/524e7c80-3d9c-11eb-80e3-114fc0c5929b?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-10-29T13%3A54%3A46Z&rscd=attachment%3B+filename%3Donnx-models-bnn-pynq.zip&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-10-29T12%3A53%3A48Z&ske=2025-10-29T13%3A54%3A46Z&sks=b&skv=2018-11-09&sig=Q4eB9rEPH4S%2Bx%2Fm7eu%2FCxam0iIf33cm6%2FxW3GFjzejU%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2MTc0MzQ4OCwibmJmIjoxNzYxNzQzMTg4LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.LQnHBi7enTnSa1AS2BxCg82O87_rCtUG6LmjfW_aUu8&response-content-disposition=attachment%3B%20filename%3Donnx-models-bnn-pynq.zip&response-content-type=application%2Foctet-stream
+Resolving release-assets.githubusercontent.com (release-assets.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.111.133, ...
+Connecting to release-assets.githubusercontent.com (release-assets.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1570253 (1.5M) [application/octet-stream]
+Saving to: ‘onnx-models-bnn-pynq.zip’
+
+     0K .......... .......... .......... .......... ..........  3% 25.8M 0s
+    50K .......... .......... .......... .......... ..........  6% 31.4M 0s
+   100K .......... .......... .......... .......... ..........  9% 90.9M 0s
+   150K .......... .......... .......... .......... .......... 13% 50.9M 0s
+   200K .......... .......... .......... .......... .......... 16%  117M 0s
+   250K .......... .......... .......... .......... .......... 19%  123M 0s
+   300K .......... .......... .......... .......... .......... 22% 88.7M 0s
+   350K .......... .......... .......... .......... .......... 26%  120M 0s
+   400K .......... .......... .......... .......... .......... 29%  119M 0s
+   450K .......... .......... .......... .......... .......... 32%  119M 0s
+   500K .......... .......... .......... .......... .......... 35%  110M 0s
+   550K .......... .......... .......... .......... .......... 39%  102M 0s
+   600K .......... .......... .......... .......... .......... 42%  122M 0s
+   650K .......... .......... .......... .......... .......... 45%  118M 0s
+   700K .......... .......... .......... .......... .......... 48% 91.2M 0s
+   750K .......... .......... .......... .......... .......... 52%  121M 0s
+   800K .......... .......... .......... .......... .......... 55%  118M 0s
+   850K .......... .......... .......... .......... .......... 58% 12.0M 0s
+   900K .......... .......... .......... .......... .......... 61%  124M 0s
+   950K .......... .......... .......... .......... .......... 65%  150M 0s
+  1000K .......... .......... .......... .......... .......... 68%  145M 0s
+  1050K .......... .......... .......... .......... .......... 71%  145M 0s
+  1100K .......... .......... .......... .......... .......... 74%  129M 0s
+  1150K .......... .......... .......... .......... .......... 78%  226M 0s
+  1200K .......... .......... .......... .......... .......... 81%  217M 0s
+  1250K .......... .......... .......... .......... .......... 84%  230M 0s
+  1300K .......... .......... .......... .......... .......... 88%  192M 0s
+  1350K .......... .......... .......... .......... .......... 91%  216M 0s
+  1400K .......... .......... .......... .......... .......... 94%  197M 0s
+  1450K .......... .......... .......... .......... .......... 97%  224M 0s
+  1500K .......... .......... .......... ...                  100%  177M=0.02s
+
+2025-10-29 13:06:28 (82.0 MB/s) - ‘onnx-models-bnn-pynq.zip’ saved [1570253/1570253]
+
+Archive:  onnx-models-bnn-pynq.zip
+  inflating: cnv-w1a1.onnx           
+  inflating: cnv-w1a2.onnx           
+  inflating: cnv-w2a2.onnx           
+  inflating: tfc-w1a1.onnx           
+  inflating: tfc-w1a2.onnx           
+  inflating: tfc-w2a2.onnx           
+--2025-10-29 13:06:28--  https://github.com/Xilinx/finn-examples/releases/download/v0.0.7a/onnx-models-resnet50.zip
+Resolving github.com (github.com)... 140.82.121.4
+Connecting to github.com (github.com)|140.82.121.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://release-assets.githubusercontent.com/github-production-release-asset/317767587/b5f5e521-d36c-45de-a218-e4247d65d462?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-10-29T13%3A44%3A09Z&rscd=attachment%3B+filename%3Donnx-models-resnet50.zip&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-10-29T12%3A43%3A28Z&ske=2025-10-29T13%3A44%3A09Z&sks=b&skv=2018-11-09&sig=h2fiC0n67MY%2FoWHqllpKkbl7necglg2Ii2mYeiLmOno%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2MTc0MzQ4OCwibmJmIjoxNzYxNzQzMTg4LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.LQnHBi7enTnSa1AS2BxCg82O87_rCtUG6LmjfW_aUu8&response-content-disposition=attachment%3B%20filename%3Donnx-models-resnet50.zip&response-content-type=application%2Foctet-stream [following]
+--2025-10-29 13:06:28--  https://release-assets.githubusercontent.com/github-production-release-asset/317767587/b5f5e521-d36c-45de-a218-e4247d65d462?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-10-29T13%3A44%3A09Z&rscd=attachment%3B+filename%3Donnx-models-resnet50.zip&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-10-29T12%3A43%3A28Z&ske=2025-10-29T13%3A44%3A09Z&sks=b&skv=2018-11-09&sig=h2fiC0n67MY%2FoWHqllpKkbl7necglg2Ii2mYeiLmOno%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2MTc0MzQ4OCwibmJmIjoxNzYxNzQzMTg4LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.LQnHBi7enTnSa1AS2BxCg82O87_rCtUG6LmjfW_aUu8&response-content-disposition=attachment%3B%20filename%3Donnx-models-resnet50.zip&response-content-type=application%2Foctet-stream
+Resolving release-assets.githubusercontent.com (release-assets.githubusercontent.com)... 185.199.111.133, 185.199.110.133, 185.199.108.133, ...
+Connecting to release-assets.githubusercontent.com (release-assets.githubusercontent.com)|185.199.111.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 8291178 (7.9M) [application/octet-stream]
+Saving to: ‘onnx-models-resnet50.zip’
+
+     0K .......... .......... .......... .......... ..........  0% 18.6M 0s
+    50K .......... .......... .......... .......... ..........  1% 49.4M 0s
+   100K .......... .......... .......... .......... ..........  1% 85.2M 0s
+   150K .......... .......... .......... .......... ..........  2% 68.9M 0s
+   200K .......... .......... .......... .......... ..........  3%  119M 0s
+   250K .......... .......... .......... .......... ..........  3%  115M 0s
+   300K .......... .......... .......... .......... ..........  4%  107M 0s
+   350K .......... .......... .......... .......... ..........  4% 98.5M 0s
+   400K .......... .......... .......... .......... ..........  5% 33.0M 0s
+   450K .......... .......... .......... .......... ..........  6% 93.1M 0s
+   500K .......... .......... .......... .......... ..........  6% 92.9M 0s
+   550K .......... .......... .......... .......... ..........  7% 89.8M 0s
+   600K .......... .......... .......... .......... ..........  8% 95.3M 0s
+   650K .......... .......... .......... .......... ..........  8%  101M 0s
+   700K .......... .......... .......... .......... ..........  9% 95.3M 0s
+   750K .......... .......... .......... .......... ..........  9% 75.4M 0s
+   800K .......... .......... .......... .......... .......... 10% 92.2M 0s
+   850K .......... .......... .......... .......... .......... 11% 84.4M 0s
+   900K .......... .......... .......... .......... .......... 11% 96.6M 0s
+   950K .......... .......... .......... .......... .......... 12% 89.1M 0s
+  1000K .......... .......... .......... .......... .......... 12% 70.7M 0s
+  1050K .......... .......... .......... .......... .......... 13% 92.9M 0s
+  1100K .......... .......... .......... .......... .......... 14% 91.9M 0s
+  1150K .......... .......... .......... .......... .......... 14% 82.8M 0s
+  1200K .......... .......... .......... .......... .......... 15% 97.7M 0s
+  1250K .......... .......... .......... .......... .......... 16% 95.0M 0s
+  1300K .......... .......... .......... .......... .......... 16% 23.8M 0s
+  1350K .......... .......... .......... .......... .......... 17%  258M 0s
+  1400K .......... .......... .......... .......... .......... 17%  267M 0s
+  1450K .......... .......... .......... .......... .......... 18%  285M 0s
+  1500K .......... .......... .......... .......... .......... 19% 89.4M 0s
+  1550K .......... .......... .......... .......... .......... 19%  247M 0s
+  1600K .......... .......... .......... .......... .......... 20%  286M 0s
+  1650K .......... .......... .......... .......... .......... 20%  262M 0s
+  1700K .......... .......... .......... .......... .......... 21%  249M 0s
+  1750K .......... .......... .......... .......... .......... 22%  246M 0s
+  1800K .......... .......... .......... .......... .......... 22%  261M 0s
+  1850K .......... .......... .......... .......... .......... 23%  274M 0s
+  1900K .......... .......... .......... .......... .......... 24%  280M 0s
+  1950K .......... .......... .......... .......... .......... 24%  227M 0s
+  2000K .......... .......... .......... .......... .......... 25%  266M 0s
+  2050K .......... .......... .......... .......... .......... 25%  281M 0s
+  2100K .......... .......... .......... .......... .......... 26%  131M 0s
+  2150K .......... .......... .......... .......... .......... 27%  114M 0s
+  2200K .......... .......... .......... .......... .......... 27%  117M 0s
+  2250K .......... .......... .......... .......... .......... 28%  120M 0s
+  2300K .......... .......... .......... .......... .......... 29%  106M 0s
+  2350K .......... .......... .......... .......... .......... 29% 96.1M 0s
+  2400K .......... .......... .......... .......... .......... 30%  119M 0s
+  2450K .......... .......... .......... .......... .......... 30%  105M 0s
+  2500K .......... .......... .......... .......... .......... 31%  117M 0s
+  2550K .......... .......... .......... .......... .......... 32%  112M 0s
+  2600K .......... .......... .......... .......... .......... 32%  112M 0s
+  2650K .......... .......... .......... .......... .......... 33%  118M 0s
+  2700K .......... .......... .......... .......... .......... 33%  112M 0s
+  2750K .......... .......... .......... .......... .......... 34% 97.8M 0s
+  2800K .......... .......... .......... .......... .......... 35%  120M 0s
+  2850K .......... .......... .......... .......... .......... 35%  106M 0s
+  2900K .......... .......... .......... .......... .......... 36%  118M 0s
+  2950K .......... .......... .......... .......... .......... 37%  108M 0s
+  3000K .......... .......... .......... .......... .......... 37%  127M 0s
+  3050K .......... .......... .......... .......... .......... 38%  119M 0s
+  3100K .......... .......... .......... .......... .......... 38% 97.7M 0s
+  3150K .......... .......... .......... .......... .......... 39%  105M 0s
+  3200K .......... .......... .......... .......... .......... 40%  119M 0s
+  3250K .......... .......... .......... .......... .......... 40%  106M 0s
+  3300K .......... .......... .......... .......... .......... 41%  120M 0s
+  3350K .......... .......... .......... .......... .......... 41%  106M 0s
+  3400K .......... .......... .......... .......... .......... 42%  127M 0s
+  3450K .......... .......... .......... .......... .......... 43%  116M 0s
+  3500K .......... .......... .......... .......... .......... 43%  118M 0s
+  3550K .......... .......... .......... .......... .......... 44% 92.7M 0s
+  3600K .......... .......... .......... .......... .......... 45%  119M 0s
+  3650K .......... .......... .......... .......... .......... 45%  119M 0s
+  3700K .......... .......... .......... .......... .......... 46%  105M 0s
+  3750K .......... .......... .......... .......... .......... 46%  115M 0s
+  3800K .......... .......... .......... .......... .......... 47%  119M 0s
+  3850K .......... .......... .......... .......... .......... 48%  119M 0s
+  3900K .......... .......... .......... .......... .......... 48%  120M 0s
+  3950K .......... .......... .......... .......... .......... 49% 86.5M 0s
+  4000K .......... .......... .......... .......... .......... 50%  119M 0s
+  4050K .......... .......... .......... .......... .......... 50% 1.02M 0s
+  4100K .......... .......... .......... .......... .......... 51%  122M 0s
+  4150K .......... .......... .......... .......... .......... 51% 72.3M 0s
+  4200K .......... .......... .......... .......... .......... 52%  112M 0s
+  4250K .......... .......... .......... .......... .......... 53%  100M 0s
+  4300K .......... .......... .......... .......... .......... 53%  122M 0s
+  4350K .......... .......... .......... .......... .......... 54%  122M 0s
+  4400K .......... .......... .......... .......... .......... 54% 90.4M 0s
+  4450K .......... .......... .......... .......... .......... 55%  119M 0s
+  4500K .......... .......... .......... .......... .......... 56%  118M 0s
+  4550K .......... .......... .......... .......... .......... 56%  119M 0s
+  4600K .......... .......... .......... .......... .......... 57% 99.7M 0s
+  4650K .......... .......... .......... .......... .......... 58%  114M 0s
+  4700K .......... .......... .......... .......... .......... 58% 69.7M 0s
+  4750K .......... .......... .......... .......... .......... 59%  118M 0s
+  4800K .......... .......... .......... .......... .......... 59%  102M 0s
+  4850K .......... .......... .......... .......... .......... 60%  106M 0s
+  4900K .......... .......... .......... .......... .......... 61%  117M 0s
+  4950K .......... .......... .......... .......... .......... 61%  119M 0s
+  5000K .......... .......... .......... .......... .......... 62%  105M 0s
+  5050K .......... .......... .......... .......... .......... 62%  123M 0s
+  5100K .......... .......... .......... .......... .......... 63%  104M 0s
+  5150K .......... .......... .......... .......... .......... 64%  108M 0s
+  5200K .......... .......... .......... .......... .......... 64%  121M 0s
+  5250K .......... .......... .......... .......... .......... 65%  120M 0s
+  5300K .......... .......... .......... .......... .......... 66%  101M 0s
+  5350K .......... .......... .......... .......... .......... 66%  121M 0s
+  5400K .......... .......... .......... .......... .......... 67% 88.3M 0s
+  5450K .......... .......... .......... .......... .......... 67%  121M 0s
+  5500K .......... .......... .......... .......... .......... 68%  124M 0s
+  5550K .......... .......... .......... .......... .......... 69%  104M 0s
+  5600K .......... .......... .......... .......... .......... 69% 96.5M 0s
+  5650K .......... .......... .......... .......... .......... 70%  126M 0s
+  5700K .......... .......... .......... .......... .......... 71%  105M 0s
+  5750K .......... .......... .......... .......... .......... 71%  119M 0s
+  5800K .......... .......... .......... .......... .......... 72%  116M 0s
+  5850K .......... .......... .......... .......... .......... 72%  119M 0s
+  5900K .......... .......... .......... .......... .......... 73%  118M 0s
+  5950K .......... .......... .......... .......... .......... 74%  106M 0s
+  6000K .......... .......... .......... .......... .......... 74% 96.1M 0s
+  6050K .......... .......... .......... .......... .......... 75%  120M 0s
+  6100K .......... .......... .......... .......... .......... 75%  105M 0s
+  6150K .......... .......... .......... .......... .......... 76%  120M 0s
+  6200K .......... .......... .......... .......... .......... 77%  113M 0s
+  6250K .......... .......... .......... .......... .......... 77%  121M 0s
+  6300K .......... .......... .......... .......... .......... 78%  120M 0s
+  6350K .......... .......... .......... .......... .......... 79%  105M 0s
+  6400K .......... .......... .......... .......... .......... 79% 95.5M 0s
+  6450K .......... .......... .......... .......... .......... 80%  120M 0s
+  6500K .......... .......... .......... .......... .......... 80%  101M 0s
+  6550K .......... .......... .......... .......... .......... 81%  119M 0s
+  6600K .......... .......... .......... .......... .......... 82%  110M 0s
+  6650K .......... .......... .......... .......... .......... 82%  124M 0s
+  6700K .......... .......... .......... .......... .......... 83%  119M 0s
+  6750K .......... .......... .......... .......... .......... 83%  102M 0s
+  6800K .......... .......... .......... .......... .......... 84%  101M 0s
+  6850K .......... .......... .......... .......... .......... 85%  119M 0s
+  6900K .......... .......... .......... .......... .......... 85%  106M 0s
+  6950K .......... .......... .......... .......... .......... 86%  119M 0s
+  7000K .......... .......... .......... .......... .......... 87%  109M 0s
+  7050K .......... .......... .......... .......... .......... 87%  117M 0s
+  7100K .......... .......... .......... .......... .......... 88%  122M 0s
+  7150K .......... .......... .......... .......... .......... 88%  109M 0s
+  7200K .......... .......... .......... .......... .......... 89% 98.0M 0s
+  7250K .......... .......... .......... .......... .......... 90%  121M 0s
+  7300K .......... .......... .......... .......... .......... 90%  103M 0s
+  7350K .......... .......... .......... .......... .......... 91%  122M 0s
+  7400K .......... .......... .......... .......... .......... 92%  105M 0s
+  7450K .......... .......... .......... .......... .......... 92%  119M 0s
+  7500K .......... .......... .......... .......... .......... 93%  134M 0s
+  7550K .......... .......... .......... .......... .......... 93%  106M 0s
+  7600K .......... .......... .......... .......... .......... 94% 96.1M 0s
+  7650K .......... .......... .......... .......... .......... 95%  119M 0s
+  7700K .......... .......... .......... .......... .......... 95%  104M 0s
+  7750K .......... .......... .......... .......... .......... 96%  121M 0s
+  7800K .......... .......... .......... .......... .......... 96%  114M 0s
+  7850K .......... .......... .......... .......... .......... 97%  120M 0s
+  7900K .......... .......... .......... .......... .......... 98%  119M 0s
+  7950K .......... .......... .......... .......... .......... 98%  104M 0s
+  8000K .......... .......... .......... .......... .......... 99% 96.2M 0s
+  8050K .......... .......... .......... .......... ......    100%  143M=0.1s
+
+2025-10-29 13:06:28 (64.3 MB/s) - ‘onnx-models-resnet50.zip’ saved [8291178/8291178]
+
+Archive:  onnx-models-resnet50.zip
+  inflating: resnet50_w1a2_exported.onnx  
+./build-all.sh: line 56: cd: /home/lstasytis/finn_prs/finn-examples/build/finn: No such file or directory
+./build-all.sh: line 58: ./run-docker.sh: No such file or directory
+./build-all.sh: line 58: ./run-docker.sh: No such file or directory
+./build-all.sh: line 58: ./run-docker.sh: No such file or directory
+./build-all.sh: line 58: ./run-docker.sh: No such file or directory
+./build-all.sh: line 58: ./run-docker.sh: No such file or directory
+./build-all.sh: line 58: ./run-docker.sh: No such file or directory
+cp: cannot stat '/home/lstasytis/finn_prs/finn-examples/build/resnet50/release/*': No such file or directory
+  adding: Pynq-Z1/ (stored 0%)
+  adding: Ultra96/ (stored 0%)
+  adding: xilinx_u250_gen3x16_xdma_2_1_202010_1/ (stored 0%)
+  adding: ZCU104/ (stored 0%)

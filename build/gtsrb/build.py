@@ -80,6 +80,7 @@ def custom_step_add_postproc(model, cfg):
     model = model.transform(InsertTopK(k=1))
     return model
 
+
 # assemble build flow from custom and pre-existing steps
 def select_build_steps():
     return [
@@ -97,9 +98,7 @@ def select_build_steps():
     ]
 
 
-custom_build_steps = (
-    [custom_step_add_preproc] + [custom_step_add_postproc] + select_build_steps()
-)
+custom_build_steps = [custom_step_add_preproc] + [custom_step_add_postproc] + select_build_steps()
 
 
 # determine which shell flow to use for a given platform
@@ -144,7 +143,6 @@ for platform_name in platforms_to_build:
             auto_fifo_strategy = "largefifo_rtlsim"
             tav_generation_strategy_key = "rtlsim"
 
-
         last_output_dir = "output_%s_%s" % (model_name, release_platform_name)
         # set up the build configuration for this model
         cfg = build_cfg.DataflowBuildConfig(
@@ -160,6 +158,7 @@ for platform_name in platforms_to_build:
             auto_fifo_depths=True,
             auto_fifo_strategy=auto_fifo_strategy,
             tav_generation_strategy=tav_generation_strategy_key,
+            skip_resynth_during_fifo_sizing=True,
             generate_outputs=[
                 build_cfg.DataflowOutputType.ESTIMATE_REPORTS,
             ],
@@ -171,5 +170,7 @@ for platform_name in platforms_to_build:
         t1 = time.time()
 
         model = ModelWrapper(last_output_dir + "/intermediate_models/step_set_fifo_depths.onnx")
-        size,depth = compute_total_model_fifo_size(model)
-        print(f"fifo sizing method: {method}, total fifo size in kb: {size // 1024}, depth: {depth}, time: {t1-t0}s")
+        size, depth = compute_total_model_fifo_size(model)
+        print(
+            f"fifo sizing method: {method}, total fifo size in kb: {size // 1024}, depth: {depth}, time: {t1-t0}s"
+        )

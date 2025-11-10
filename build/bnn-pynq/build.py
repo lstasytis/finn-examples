@@ -34,23 +34,24 @@ import shutil
 from finn.util.basic import compute_total_model_fifo_size
 from qonnx.core.modelwrapper import ModelWrapper
 import time
+from qonnx.util.config import extract_model_config_to_json
 
 # the BNN-PYNQ models -- these all come as exported .onnx models
 # see models/download_bnn_pynq_models.sh
 models = [
     "tfc-w1a1",
-    "tfc-w1a2",
-    "tfc-w2a2",
+    # "tfc-w1a2",
+    # "tfc-w2a2",
     "cnv-w1a1",
-    "cnv-w1a2",
-    "cnv-w2a2",
+    # "cnv-w1a2",
+    # "cnv-w2a2",
 ]
 
 verif_en = os.getenv("VERIFICATION_EN", "0")
 
 # which platforms to build the networks for
-zynq_platforms = ["Pynq-Z1", "Ultra96", "ZCU104"]
-alveo_platforms = ["U250"]
+zynq_platforms = ["ZCU104"]
+alveo_platforms = []
 platforms_to_build = zynq_platforms + alveo_platforms
 
 
@@ -111,7 +112,6 @@ for platform_name in platforms_to_build:
         platform_dir = "release/%s" % release_platform_name
         os.makedirs(platform_dir, exist_ok=True)
 
-
         if method == "analytic_model_based":
             auto_fifo_strategy = "analytical"
             tav_generation_strategy_key = "tree_model"
@@ -127,7 +127,6 @@ for platform_name in platforms_to_build:
         else:
             auto_fifo_depths = False
 
-        
         for model_name in models:
             # set up the build configuration for this model
             last_output_dir = "output_%s_%s" % (model_name, release_platform_name)
@@ -142,10 +141,8 @@ for platform_name in platforms_to_build:
                 tav_generation_strategy=tav_generation_strategy_key,
                 shell_flow_type=shell_flow_type,
                 vitis_platform=vitis_platform,
-                generate_outputs=[
-                    build_cfg.DataflowOutputType.BITFILE,
-                    build_cfg.DataflowOutputType.STITCHED_IP,
-                ],
+                skip_resynth_during_fifo_sizing=True,
+                generate_outputs=[],
                 save_intermediate_models=True,
                 default_swg_exception=True,
                 specialize_layers_config_file="specialize_layers_config/%s_specialize_layers.json"
@@ -153,12 +150,31 @@ for platform_name in platforms_to_build:
             )
             model_file = "models/%s.onnx" % model_name
 
-
             # Build the model without verification
             t0 = time.time()
-            build.build_dataflow_cfg(model_file, cfg)
+            build.build_dataflow_cfg(model, cfg)
             t1 = time.time()
 
             model = ModelWrapper(last_output_dir + "/intermediate_models/step_set_fifo_depths.onnx")
-            size,depth = compute_total_model_fifo_size(model)
-            print(f"fifo sizing method: {method}, total fifo size in kb: {size // 1024}, depth: {depth}, time: {t1-t0}s")
+            size, depth = compute_total_model_fifo_size(model)
+            print(
+                f"=================================\nfifo sizing method: {method}, size: {size // 1024//8}KB, depth: {depth}, time: {t1-t0}s"
+            )
+
+            hw_attrs = [
+                "PE",
+                "SIMD",
+                "parallel_window",
+                "ram_style",
+                "depth",
+                "impl_style",
+                "resType",
+                "mem_mode",
+                "runtime_writeable_weights",
+                "inFIFODepths",
+                "outFIFODepths",
+                "depth_trigger_uram",
+                "depth_trigger_bram",
+            ]
+
+            extract_model_config_to_json(model, f"{model_name}_{method}.json", hw_attrs)

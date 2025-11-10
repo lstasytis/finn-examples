@@ -31,6 +31,7 @@ import finn.builder.build_dataflow_config as build_cfg
 from finn.util.basic import alveo_default_platform
 import os
 import shutil
+from qonnx.util.config import extract_model_config_to_json
 from finn.util.basic import compute_total_model_fifo_size
 from qonnx.core.modelwrapper import ModelWrapper
 import time
@@ -41,7 +42,7 @@ model_name = "unsw_nb15-mlp-w2a2"
 verif_en = os.getenv("VERIFICATION_EN", "0")
 
 # Which platforms to build the networks for
-zynq_platforms = ["Pynq-Z1", "Ultra96", "ZCU104"]
+zynq_platforms = ["ZCU104"]
 alveo_platforms = []
 
 # Note: only zynq platforms currently tested
@@ -79,6 +80,7 @@ def select_build_steps():
         "step_generate_estimate_reports",
         "step_set_fifo_depths",
     ]
+
 
 for platform_name in platforms_to_build:
     for method in methods:
@@ -120,6 +122,7 @@ for platform_name in platforms_to_build:
             auto_fifo_depths=True,
             auto_fifo_strategy=auto_fifo_strategy,
             tav_generation_strategy=tav_generation_strategy_key,
+            skip_resynth_during_fifo_sizing=True,
             vitis_opt_strategy=build_cfg.VitisOptStrategyCfg.PERFORMANCE_BEST,
             generate_outputs=[
                 build_cfg.DataflowOutputType.ESTIMATE_REPORTS,
@@ -134,5 +137,25 @@ for platform_name in platforms_to_build:
         t1 = time.time()
 
         model = ModelWrapper(last_output_dir + "/intermediate_models/step_set_fifo_depths.onnx")
-        size,depth = compute_total_model_fifo_size(model)
-        print(f"fifo sizing method: {method}, total fifo size in kb: {size // 1024}, depth: {depth}, time: {t1-t0}s")
+        size, depth = compute_total_model_fifo_size(model)
+        print(
+            f"=================================\nfifo sizing method: {method}, size: {size // 1024//8}KB, depth: {depth}, time: {t1-t0}s"
+        )
+
+        hw_attrs = [
+            "PE",
+            "SIMD",
+            "parallel_window",
+            "ram_style",
+            "depth",
+            "impl_style",
+            "resType",
+            "mem_mode",
+            "runtime_writeable_weights",
+            "inFIFODepths",
+            "outFIFODepths",
+            "depth_trigger_uram",
+            "depth_trigger_bram",
+        ]
+
+        extract_model_config_to_json(model, f"{model_name}_{method}.json", hw_attrs)

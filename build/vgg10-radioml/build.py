@@ -30,6 +30,7 @@ import finn.builder.build_dataflow as build
 import finn.builder.build_dataflow_config as build_cfg
 from finn.util.basic import alveo_default_platform
 import os
+from qonnx.util.config import extract_model_config_to_json
 from finn.util.basic import compute_total_model_fifo_size
 from qonnx.core.modelwrapper import ModelWrapper
 import time
@@ -94,7 +95,8 @@ def select_build_steps(platform):
 # create a release dir, used for finn-examples release packaging
 os.makedirs("release", exist_ok=True)
 
-methods = ["analytic_model_based", "analytic_rtlsim"]
+methods = ["analytic_model_based"]  # "analytic_rtlsim"
+# methods = ["analytic_rtlsim"]
 
 for platform_name in platforms_to_build:
     for method in methods:
@@ -122,7 +124,6 @@ for platform_name in platforms_to_build:
             auto_fifo_strategy = "largefifo_rtlsim"
             tav_generation_strategy_key = "rtlsim"
 
-
         last_output_dir = "output_%s_%s" % (model_name, release_platform_name)
         cfg = build_cfg.DataflowBuildConfig(
             steps=select_build_steps(platform_name),
@@ -137,16 +138,15 @@ for platform_name in platforms_to_build:
             split_large_fifos=True,
             standalone_thresholds=True,
             auto_fifo_depths=True,
+            skip_resynth_during_fifo_sizing=True,
             auto_fifo_strategy=auto_fifo_strategy,
             tav_generation_strategy=tav_generation_strategy_key,
-
             # enable extra performance optimizations (physopt)
             vitis_opt_strategy=build_cfg.VitisOptStrategyCfg.PERFORMANCE_BEST,
             generate_outputs=[
                 build_cfg.DataflowOutputType.ESTIMATE_REPORTS,
             ],
         )
-        
 
         # Build the model without verification
         t0 = time.time()
@@ -154,5 +154,28 @@ for platform_name in platforms_to_build:
         t1 = time.time()
 
         model = ModelWrapper(last_output_dir + "/intermediate_models/step_set_fifo_depths.onnx")
-        size,depth = compute_total_model_fifo_size(model)
-        print(f"fifo sizing method: {method}, total fifo size in kb: {size // 1024}, depth: {depth}, time: {t1-t0}s")
+        size, depth = compute_total_model_fifo_size(model)
+        print(
+            f"=================================\nfifo sizing method: {method}, size: {size // 1024//8}KB, depth: {depth}, time: {t1-t0}s"
+        )
+
+        hw_attrs = [
+            "PE",
+            "SIMD",
+            "parallel_window",
+            "ram_style",
+            "depth",
+            "impl_style",
+            "resType",
+            "mem_mode",
+            "runtime_writeable_weights",
+            "inFIFODepths",
+            "outFIFODepths",
+            "depth_trigger_uram",
+            "depth_trigger_bram",
+        ]
+
+        extract_model_config_to_json(model, f"{model_name}_{method}.json", hw_attrs)
+
+        # from qonnx.custom_op.registry import getCustomOp
+        # import pdb;breakpoint()
