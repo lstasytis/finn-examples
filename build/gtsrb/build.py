@@ -80,6 +80,22 @@ def custom_step_add_postproc(model, cfg):
     model = model.transform(InsertTopK(k=1))
     return model
 
+# assemble build flow from custom and pre-existing steps
+def select_build_steps():
+    return [
+        "step_qonnx_to_finn",
+        "step_tidy_up",
+        "step_streamline",
+        "step_convert_to_hw",
+        "step_create_dataflow_partition",
+        "step_specialize_layers",
+        "step_target_fps_parallelization",
+        "step_apply_folding_config",
+        "step_minimize_bit_width",
+        "step_generate_estimate_reports",
+        "step_set_fifo_depths",
+    ]
+
 
 # assemble build flow from custom and pre-existing steps
 def select_build_steps():

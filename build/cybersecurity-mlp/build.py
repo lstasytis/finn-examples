@@ -81,7 +81,6 @@ def select_build_steps():
         "step_set_fifo_depths",
     ]
 
-
 for platform_name in platforms_to_build:
     for method in methods:
         shell_flow_type = platform_to_shell(platform_name)
